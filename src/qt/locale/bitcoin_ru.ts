@@ -125,6 +125,21 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Bitcoin-бумажник</translation>
     </message>
     <message>
+        <location filename="../bitcoingui.cpp" line="61"/>
+        <source>&amp;File</source>
+        <translation>&amp;Файл</translation>
+    </message>
+    <message>
+        <location filename="../bitcoingui.cpp" line="67"/>
+        <source>&amp;Settings</source>
+        <translation>&amp;Настройки</translation>
+    </message>
+    <message>
+        <location filename="../bitcoingui.cpp" line="70"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Помощь</translation>
+    </message>
+    <message>
         <location filename="../bitcoingui.cpp" line="74"/>
         <source>Tabs toolbar</source>
         <translation>Панель вкладок</translation>
@@ -943,8 +958,6 @@ p, li { white-space: pre-wrap; }
         <source>Open for %n block(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1413,7 +1426,7 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="59"/>
         <source>Error: Transaction creation failed  </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ошибка: Создание транзакции не удалось  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="60"/>
@@ -1423,7 +1436,7 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="61"/>
         <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ошибка: В транзакции отказано.  Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.  Или в случае кражи (компрометации) Вашего бумажника.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="65"/>
