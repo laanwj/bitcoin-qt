@@ -149,4 +149,4 @@ FORMS += \
     src/qt/forms/sendcoinsentry.ui
 
 CODECFORTR = UTF-8
-TRANSLATIONS = src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_de.ts
+TRANSLATIONS = src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_ru.ts
