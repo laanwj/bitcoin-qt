@@ -787,7 +787,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../transactiondesc.cpp" line="34"/>
         <source>Open for %1 blocks</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыто до достижения %1 блоков</translation>
     </message>
     <message>
         <location filename="../transactiondesc.cpp" line="36"/>
@@ -983,7 +983,7 @@ p, li { white-space: pre-wrap; }
     <message numerus="yes">
         <location filename="../transactiontablemodel.cpp" line="295"/>
         <source>Mined balance will be available in %n more blocks</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Добытыми монетами можно будет воспользоваться через %n блок</numerusform>
             <numerusform>Добытыми монетами можно будет воспользоваться через %n блока</numerusform>
             <numerusform>Добытыми монетами можно будет воспользоваться через %n блоков</numerusform>
@@ -1157,311 +1157,345 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../bitcoinstrings.cpp" line="3"/>
         <source>Bitcoin version</source>
-        <translation type="unfinished">Версия</translation>
+        <translation>Версия</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="4"/>
         <source>Usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Использование:</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="5"/>
         <source>Send command to -server or bitcoind
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить команду на сервер ( -server ) или демону
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="6"/>
         <source>List commands
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Список команд
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="7"/>
         <source>Get help for a command
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Получить помощь по команде</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="8"/>
         <source>Options:
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Опции:
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="9"/>
         <source>Specify configuration file (default: bitcoin.conf)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Указать конфигурационный файл вместо используемого по умолчанию (bitcoin.conf)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="10"/>
         <source>Specify pid file (default: bitcoind.pid)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Указать pid-файл вместо используемого по умолчанию (bitcoin.pid)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="11"/>
         <source>Generate coins
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Включить добычу монет
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="12"/>
         <source>Don&apos;t generate coins
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Выключить добычу монет
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="13"/>
         <source>Start minimized
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Запускать минимизированным
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="14"/>
         <source>Specify data directory
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Указать рабочую директорию
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="15"/>
         <source>Specify connection timeout (in milliseconds)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Указать таймаут соединения (в миллисекундах)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="16"/>
         <source>Connect through socks4 proxy
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Соединяться через socks4-прокси
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="17"/>
         <source>Allow DNS lookups for addnode and connect
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Разрешить поиск в DNS для комманд &quot;addnode&quot; и &quot;connect&quot;
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="18"/>
         <source>Add a node to connect to
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить узел для соединения
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="19"/>
         <source>Connect only to the specified node
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Соединяться только с указанным узлом
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="20"/>
         <source>Don&apos;t accept connections from outside
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Не принимать внешние соединения
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="21"/>
         <source>Don&apos;t attempt to use UPnP to map the listening port
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Не пытаться использовать UPnP
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="22"/>
         <source>Attempt to use UPnP to map the listening port
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Попытаться использовать UPnP для проброса прослушиваемого порта на роутере
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="23"/>
         <source>Fee per KB to add to transactions you send
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Комиссия (за каждый KB транзакции)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="24"/>
         <source>Accept command line and JSON-RPC commands
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Принимать команды из командной строки и через JSON-RPC
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="25"/>
         <source>Run in the background as a daemon and accept commands
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Запустить в бекграунде (как демон) и принимать команды
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="26"/>
         <source>Use the test network
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать тестовую сеть
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="27"/>
         <source>Username for JSON-RPC connections
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя для JSON-RPC соединений
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="28"/>
         <source>Password for JSON-RPC connections
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль для JSON-RPC соединений
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="29"/>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8332)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Слушать &lt;порт&gt; для JSON-RPC соединений (по умолчанию: 8332)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="30"/>
         <source>Allow JSON-RPC connections from specified IP address
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Разрешить JSON-RPC соединения с указанного адреса
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="31"/>
         <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Отправлять команды на узел,запущенный на &lt;IP&gt; (по умолчанию: 127.0.0.1)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="32"/>
         <source>Set key pool size to &lt;n&gt; (default: 100)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Установить размер key pool&apos;а в &lt;n&gt; (по умолчанию: 100)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="33"/>
         <source>Rescan the block chain for missing wallet transactions
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Просканировать цепочку блоков в поисках пропущенных транзакций для бумажника
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="34"/>
         <source>
 SSL options: (see the Bitcoin Wiki for SSL setup instructions)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Опции SSL: (см. Bitcoin Wiki для инструкций)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="37"/>
         <source>Use OpenSSL (https) for JSON-RPC connections
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать OpenSSL (https) для JSON-RPC соединений
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="38"/>
         <source>Server certificate file (default: server.cert)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Сертификат (публичный ключ) сервера (по умолчанию: server.cert)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="39"/>
         <source>Server private key (default: server.pem)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Закрытый ключ сервера (по умолчанию: server.pem)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="40"/>
         <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Допустимые Cipher&apos;ы для сервера (по умолчанию: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="43"/>
         <source>This help message
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Данная справка
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="44"/>
         <source>Cannot obtain a lock on data directory %s.  Bitcoin is probably already running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно установить блокировку на рабочую директорию %s.  Возможно, бумажник уже запущен.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="47"/>
         <source>Error loading addr.dat      
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при загрузке addr.dat      
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="48"/>
         <source>Error loading blkindex.dat      
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при загрузке blkindex.dat      
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="49"/>
         <source>Error loading wallet.dat      
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при загрузке wallet.dat      
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="50"/>
         <source>Invalid -proxy address</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка в адресе прокси</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="51"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка в сумме комиссии</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="52"/>
         <source>Warning: -paytxfee is set very high.  This is the transaction fee you will pay if you send a transaction.</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Установлена слишком большая комиссия (-paytxfee=).  Данный параметр отвечает за комиссию, которую Вы будете добавлять к сумме при осуществлении транзакций.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="55"/>
         <source>Warning: Disk space is low  </source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: На диске заканчивается свободное пространство  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="56"/>
         <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds  </source>
-        <translation type="unfinished"></translation>
+        <translation>ОШИБКА: Данная транзакция требует добавления комиссии (по крайней мере в %s) из-за её размера, сложности, или из-за использования недавно полученных монет  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="59"/>
         <source>Error: Transaction creation failed  </source>
-        <translation type="unfinished">Ошибка: Создание транзакции не удалось  </translation>
+        <translation>Ошибка: Создание транзакции не удалось  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="60"/>
         <source>Sending...</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправка...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="61"/>
         <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation type="unfinished">Ошибка: В транзакции отказано.  Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.  Или в случае кражи (компрометации) Вашего бумажника.</translation>
+        <translation>Ошибка: В транзакции отказано.  Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.  Или в случае кражи (компрометации) Вашего бумажника.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="65"/>
         <source>Invalid amount</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка в сумме</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="66"/>
         <source>Insufficient funds</source>
-        <translation type="unfinished"></translation>
+        <translation>Недостаточно монет</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="67"/>
         <source>Invalid bitcoin address</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибочный адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="68"/>
         <source>Unable to bind to port %d on this computer.  Bitcoin is probably already running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно забиндить порт %d на данном компьютере.  Возможно, бумажник ужк запущен.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="71"/>
         <source>To use the %s option</source>
-        <translation type="unfinished"></translation>
+        <translation>Для использования опции %s</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="72"/>
@@ -1469,24 +1503,29 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
 in the configuration file: %s
 If the file does not exist, create it with owner-readable-only file permissions.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: %s, Вы должны установить параметр rpcpassword=&lt;password&gt;
+в конфигурационном файле: %s
+Если файл не существует — создайте его с правами &quot;только чтение только для хозяина&quot; (r--------).
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="77"/>
         <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
 %s
 If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы должны установить параметр rpcpassword=&lt;password&gt; в конфигурационном файле:
+%s
+Если файл не существует — создайте его с правами &quot;только чтение только для хозяина&quot; (r--------).</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="82"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Bitcoin will not work properly.</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Проверьте дату и время, установленные на Вашем компьютере. Если Ваши часы идут не правильно Bitcoin может наботать не корректно.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="85"/>
         <source>-beta</source>
-        <translation type="unfinished"></translation>
+        <translation>-бета</translation>
     </message>
 </context>
 </TS>

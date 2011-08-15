@@ -110,9 +110,9 @@ std::string _(const char* psz)
     return QCoreApplication::translate("bitcoin-core", psz).toStdString();
 }
 */
-char* _(const char* psz)
+std::string _(const char* psz)
 {
-    return QCoreApplication::translate("bitcoin-core", psz).toLocal8Bit().data();;
+    return (std::string)QCoreApplication::translate("bitcoin-core", psz).toLocal8Bit().data();;
 }
 
 int main(int argc, char *argv[])
