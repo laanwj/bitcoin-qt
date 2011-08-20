@@ -136,7 +136,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             }
             return TransactionCreationFailed;
         }
-        if(!ThreadSafeAskFee(nFeeRequired, tr("Sending...").toStdString(), NULL))
+        if(!ThreadSafeAskFee(nFeeRequired, (std::string)tr("Sending...").toLocal8Bit().data(), NULL)) //.toStdString(), NULL))
         {
             return Aborted;
         }
@@ -154,7 +154,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         CRITICAL_BLOCK(wallet->cs_mapAddressBook)
         {
             if (!wallet->mapAddressBook.count(strAddress))
-                wallet->SetAddressBookName(strAddress, rcp.label.toStdString());
+                wallet->SetAddressBookName(strAddress, (std::string)rcp.label.toLocal8Bit().data());//.toStdString());
         }
     }
 

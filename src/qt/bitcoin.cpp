@@ -104,15 +104,9 @@ void InitMessage(const std::string &message)
 /*
    Translate string to current locale using Qt.
  */
-/*
 std::string _(const char* psz)
 {
-    return QCoreApplication::translate("bitcoin-core", psz).toStdString();
-}
-*/
-std::string _(const char* psz)
-{
-    return (std::string)QCoreApplication::translate("bitcoin-core", psz).toLocal8Bit().data();;
+    return (std::string)QCoreApplication::translate("bitcoin-core", psz).toLocal8Bit().data();
 }
 
 int main(int argc, char *argv[])
