@@ -958,8 +958,6 @@ p, li { white-space: pre-wrap; }
         <source>Open for %n block(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -1426,7 +1424,8 @@ p, li { white-space: pre-wrap; }
         <location filename="../bitcoinstrings.cpp" line="31"/>
         <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)
 </source>
-        <translation>Отправлять команды на узел,запущенный на &lt;IP&gt; (по умолчанию: 127.0.0.1)</translation>
+        <translation>Отправлять команды на узел,запущенный на &lt;IP&gt; (по умолчанию: 127.0.0.1)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="32"/>
@@ -1461,13 +1460,15 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
         <location filename="../bitcoinstrings.cpp" line="38"/>
         <source>Server certificate file (default: server.cert)
 </source>
-        <translation>Сертификат (публичный ключ) сервера (по умолчанию: server.cert)</translation>
+        <translation>Сертификат (публичный ключ) сервера (по умолчанию: server.cert)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="39"/>
         <source>Server private key (default: server.pem)
 </source>
-        <translation>Закрытый ключ сервера (по умолчанию: server.pem)</translation>
+        <translation>Закрытый ключ сервера (по умолчанию: server.pem)
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="40"/>
@@ -1491,7 +1492,7 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="47"/>
         <source>Loading addresses...</source>
-        <translation type="unfinished"></translation>
+        <translation>Загруза адресов...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="48"/>
@@ -1503,7 +1504,7 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="49"/>
         <source>Loading block index...</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка индекса блоков...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="50"/>
@@ -1515,19 +1516,20 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="51"/>
         <source>Loading wallet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка бумажника...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="52"/>
         <source>Error loading wallet.dat: Wallet corrupted      
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка загрузки wallet.dat: Бумажник повреждён</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="53"/>
         <source>Error loading wallet.dat: Wallet requires newer version of Bitcoin      
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка загрузки wallet.dat: Для данного бумажника требуется более новая версия Bitcoin      
+</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="55"/>
@@ -1539,12 +1541,12 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="56"/>
         <source>Rescanning...</source>
-        <translation type="unfinished"></translation>
+        <translation>Сканирование...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="57"/>
         <source>Done loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка завершена</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="58"/>
