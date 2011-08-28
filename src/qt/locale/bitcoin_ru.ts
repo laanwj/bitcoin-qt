@@ -787,12 +787,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../transactiondesc.cpp" line="34"/>
         <source>Open for %1 blocks</source>
-        <translation type="unfinished">Открыто до достижения %1 блоков</translation>
+        <translation type="unfinished">Открыто до получения %1 блоков</translation>
     </message>
     <message>
         <location filename="../transactiondesc.cpp" line="36"/>
         <source>Open until %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыто до %1</translation>
     </message>
     <message>
         <location filename="../transactiondesc.cpp" line="42"/>
@@ -957,13 +957,15 @@ p, li { white-space: pre-wrap; }
         <location filename="../transactiontablemodel.cpp" line="274"/>
         <source>Open for %n block(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
+            <numerusform>Открыто до получения %n блока</numerusform>
+            <numerusform>Открыто до получения %n блоков</numerusform>
+            <numerusform>Открыто до получения %n блоков</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../transactiontablemodel.cpp" line="277"/>
         <source>Open until %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыто до %1</translation>
     </message>
     <message>
         <location filename="../transactiontablemodel.cpp" line="280"/>
@@ -1126,32 +1128,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../transactionview.cpp" line="74"/>
         <source>Enter address or label to search</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите адрес или метку для поиска</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="80"/>
         <source>Min amount</source>
-        <translation type="unfinished"></translation>
+        <translation>Мин. сумма</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="108"/>
         <source>Copy address</source>
-        <translation type="unfinished"></translation>
+        <translation>Копировать адрес</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="109"/>
         <source>Copy label</source>
-        <translation type="unfinished"></translation>
+        <translation>Копировать метку</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="110"/>
         <source>Edit label</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить метку</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="111"/>
         <source>Show details...</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать детали...</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="244"/>
@@ -1166,37 +1168,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../transactionview.cpp" line="254"/>
         <source>Confirmed</source>
-        <translation type="unfinished"></translation>
+        <translation>Подтверждено</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="255"/>
         <source>Date</source>
-        <translation type="unfinished">Дата</translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="256"/>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="257"/>
         <source>Label</source>
-        <translation type="unfinished">Метка</translation>
+        <translation>Метка</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="258"/>
         <source>Address</source>
-        <translation type="unfinished">Адрес</translation>
+        <translation>Адрес</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="259"/>
         <source>Amount</source>
-        <translation type="unfinished">Количество</translation>
+        <translation>Количество</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="260"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="264"/>
@@ -1211,12 +1213,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../transactionview.cpp" line="352"/>
         <source>Range:</source>
-        <translation type="unfinished"></translation>
+        <translation>Промежуток от:</translation>
     </message>
     <message>
         <location filename="../transactionview.cpp" line="360"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>до</translation>
     </message>
 </context>
 <context>
@@ -1492,7 +1494,7 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="47"/>
         <source>Loading addresses...</source>
-        <translation>Загруза адресов...</translation>
+        <translation>Загрузка адресов...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="48"/>
@@ -1566,7 +1568,7 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="63"/>
         <source>Error: CreateThread(StartNode) failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка: Созданиние потока (запуск узла) не удался</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="64"/>
@@ -1576,577 +1578,576 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)
     <message>
         <location filename="../bitcoinstrings.cpp" line="68"/>
         <source>This transaction is over the size limit.  You can still send it for a fee of %s, which goes to the nodes that process your transaction and helps to support the network.  Do you want to pay the fee?</source>
-        <translation type="unfinished"></translation>
+        <translation>Данная транзакция превышает предельно допустимый размер.  Но Вы можете всё равно совершить ей, добавив комиссию в %s, которая отправится тем узлам, которые обработают Вашу транзакцию и поможет поддержать сеть.  Вы хотите добавить комиссию?</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="72"/>
         <source>Enter the current passphrase to the wallet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите текущий пароль от бумажника.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="73"/>
         <source>Passphrase</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="74"/>
         <source>Please supply the current wallet decryption passphrase.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста, укажите текущий пароль для расшифровки бумажника.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="75"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Указанный пароль не подходит.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="76"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Статус</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="77"/>
         <source>Date</source>
-        <translation type="unfinished">Дата</translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="78"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Описание</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="79"/>
         <source>Debit</source>
-        <translation type="unfinished"></translation>
+        <translation>Дебет</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="80"/>
         <source>Credit</source>
-        <translation type="unfinished"></translation>
+        <translation>Кредит</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="81"/>
         <source>Open for %d blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыто до получения %d блоков</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="82"/>
         <source>Open until %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыто до %s</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="83"/>
         <source>%d/offline?</source>
-        <translation type="unfinished"></translation>
+        <translation>%d/оффлайн?</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="84"/>
         <source>%d/unconfirmed</source>
-        <translation type="unfinished"></translation>
+        <translation>%d/не подтверждено</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="85"/>
         <source>%d confirmations</source>
-        <translation type="unfinished"></translation>
+        <translation>%d подтверждений</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="86"/>
         <source>Generated</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерированно</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="87"/>
         <source>Generated (%s matures in %d more blocks)</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерированно (%s «созреет» через %d блоков)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="88"/>
         <source>Generated - Warning: This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерированно - ВНИМАНИЕ: Данный блок не был получен ни одним другим узлом и, возможно, не будет подтверждён!</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="91"/>
         <source>Generated (not accepted)</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерированно (не подтверждено)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="92"/>
         <source>From: </source>
-        <translation type="unfinished"></translation>
+        <translation>Отправитель: </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="93"/>
         <source>Received with: </source>
-        <translation type="unfinished"></translation>
+        <translation>Получатель: </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="94"/>
         <source>Payment to yourself</source>
-        <translation type="unfinished">Отправлено себе</translation>
+        <translation>Отправлено себе</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="95"/>
         <source>To: </source>
-        <translation type="unfinished"></translation>
+        <translation>Получатель: </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="96"/>
         <source>    Generating</source>
-        <translation type="unfinished"></translation>
+        <translation>    Генерация</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="97"/>
         <source>(not connected)</source>
-        <translation type="unfinished"></translation>
+        <translation>(не подключено)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="98"/>
         <source>     %d connections     %d blocks     %d transactions</source>
-        <translation type="unfinished"></translation>
+        <translation>     %d подключений     %d блоков     %d транзакций</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="99"/>
         <source>Wallet already encrypted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Бумажник уже зашифрован.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="100"/>
         <source>Enter the new passphrase to the wallet.
 Please use a passphrase of 10 or more random characters, or eight or more words.</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите новый пароль для бумажника.
+Пожалуйста, используейте пароль из 10 и более случайных символов или из 8 и более слов.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="104"/>
         <source>Error: The supplied passphrase was too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>ОШИБКА: Указанный пароль слишком короткий.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="105"/>
         <source>WARNING: If you encrypt your wallet and lose your passphrase, you will LOSE ALL OF YOUR BITCOINS!
 Are you sure you wish to encrypt your wallet?</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Если Вы зашифруете Ваш бумажник и потеряете Ваш пароль — Вы ПОТЕРЯЕТЕ ВСЕ ВАШИ БИТКОИНЫ!!!
+Вы уверены, что хотите зашифровать бумажник?</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="109"/>
         <source>Please re-enter your new wallet passphrase.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста, повторите ввод нового пароля.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="110"/>
         <source>Error: the supplied passphrases didn&apos;t match.</source>
-        <translation type="unfinished"></translation>
+        <translation>ОШИБКА: указанные пароли не совпадают.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="111"/>
         <source>Wallet encryption failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Шифрование бумажника не удалось.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="112"/>
         <source>Wallet Encrypted.
 Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Бумажник зашифрован.
+Запомните, что шифрование Вашего бумажника не может ПОЛНОСТЬЮ гарантировать защиту Ваших биткоинов от того, чтобы быть украденными с помощью шпионского ПО на Вашем компьютере. Пожалуйста, следите за безопасностью Вашего компьютера самостоятельно.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="116"/>
         <source>Wallet is unencrypted, please encrypt it first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Бумажник не зашифрован. Сначала зашифруйте его.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="117"/>
         <source>Enter the new passphrase for the wallet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите новый пароль для бумажника.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="118"/>
         <source>Re-enter the new passphrase for the wallet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста, повторите ввод нового пароля.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="119"/>
         <source>Wallet Passphrase Changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль от бумажника изменён.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="120"/>
         <source>New Receiving Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Новый адрес для получения</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="121"/>
         <source>You should use a new address for each payment you receive.
 
 Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы должны использовать новый адрес для каждого платежа, который Вы получаете.
+
+Метка</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="125"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Статус:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Статус:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="126"/>
         <source>, has not been successfully broadcast yet</source>
-        <translation type="unfinished">, ещё не было успешно разослано</translation>
+        <translation>, ещё не было успешно разослано</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="127"/>
         <source>, broadcast through %d node</source>
-        <translation type="unfinished"></translation>
+        <translation>, разослано через %d узел</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="128"/>
         <source>, broadcast through %d nodes</source>
-        <translation type="unfinished"></translation>
+        <translation>, разослано через %d узлов</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="129"/>
         <source>&lt;b&gt;Date:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Дата:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Дата:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="130"/>
         <source>&lt;b&gt;Source:&lt;/b&gt; Generated&lt;br&gt;</source>
-        <translation type="unfinished">&lt;b&gt;Источник:&lt;/b&gt; [сгенерированно]&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Источник:&lt;/b&gt; [сгенерированно]&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="131"/>
         <source>&lt;b&gt;From:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Отправитель:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Отправитель:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="132"/>
         <source>unknown</source>
-        <translation type="unfinished">неизвестно</translation>
+        <translation>неизвестно</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="133"/>
         <source>&lt;b&gt;To:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Получатель:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Получатель:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="134"/>
         <source> (yours, label: </source>
-        <translation type="unfinished"> (Ваш, метка:</translation>
+        <translation> (Ваш, метка: </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="135"/>
         <source> (yours)</source>
-        <translation type="unfinished"> (ваш)</translation>
+        <translation> (ваш)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="136"/>
         <source>&lt;b&gt;Credit:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Кредит:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Кредит:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="137"/>
         <source>(%s matures in %d more blocks)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%s «созреет» через %d блоков)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="138"/>
         <source>(not accepted)</source>
-        <translation type="unfinished">(не принято)</translation>
+        <translation>(не принято)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="139"/>
         <source>&lt;b&gt;Debit:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Дебет:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Дебет:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="140"/>
         <source>&lt;b&gt;Transaction fee:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Комиссия:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Комиссия:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="141"/>
         <source>&lt;b&gt;Net amount:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;b&gt;Общая сумма:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Общая сумма:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="142"/>
         <source>Message:</source>
-        <translation type="unfinished">Сообщение:</translation>
+        <translation>Сообщение:</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="143"/>
         <source>Comment:</source>
-        <translation type="unfinished">Комментарий:</translation>
+        <translation>Комментарий:</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="144"/>
         <source>Generated coins must wait 120 blocks before they can be spent.  When you generated this block, it was broadcast to the network to be added to the block chain.  If it fails to get into the chain, it will change to &quot;not accepted&quot; and not be spendable.  This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерированные монеты должны подождать 120 блоков прежде, чем они смогут быть отправлены.  Когда Вы сгенерировали этот блок он был отправлен в сеть, чтобы он был добавлен к цепочке блоков.  Если данная процедура не удастся, статус изменится на «не подтверждено» и монеты будут непередаваемыми.  Такое может случайно происходить в случае, если другой узел сгенерирует блок на несколько секунд раньше.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="150"/>
         <source>Cannot write autostart/bitcoin.desktop file</source>
-        <translation type="unfinished"></translation>
+        <translation>Не возможно записать файл autostart/bitcoin.desktop</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="151"/>
         <source>Main</source>
-        <translation type="unfinished">Основное</translation>
+        <translation>Основное</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="152"/>
         <source>&amp;Start Bitcoin on window system startup</source>
-        <translation type="unfinished">&amp;Запускать бумажник при входе в систему</translation>
+        <translation>&amp;Запускать бумажник при входе в систему</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="153"/>
         <source>&amp;Minimize on close</source>
-        <translation type="unfinished"></translation>
+        <translation>С&amp;ворачивать вместо закрытия</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="154"/>
         <source>version %s</source>
-        <translation type="unfinished"></translation>
+        <translation>версия %s</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="155"/>
         <source>Error in amount  </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка в количестве  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="156"/>
         <source>Send Coins</source>
-        <translation type="unfinished">Отправка</translation>
+        <translation>Отправка</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="157"/>
         <source>Amount exceeds your balance  </source>
-        <translation type="unfinished"></translation>
+        <translation>Сумма превышает Ваш баланс  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="158"/>
         <source>Total exceeds your balance when the </source>
-        <translation type="unfinished"></translation>
+        <translation>Общая сумма превысит Ваш баланс, если к транзакции будет добавлено ещё</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="159"/>
         <source> transaction fee is included  </source>
-        <translation type="unfinished"></translation>
+        <translation>в качестве комиссии  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="160"/>
         <source>Payment sent  </source>
-        <translation type="unfinished"></translation>
+        <translation>Платёж отправлен</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="162"/>
         <source>Invalid address  </source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибочный адрес  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="163"/>
         <source>Sending %s to %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправка %s адресату %s</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="164"/>
         <source>CANCELLED</source>
-        <translation type="unfinished"></translation>
+        <translation>ОТМЕНЕНО</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="165"/>
         <source>Cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменено</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="166"/>
         <source>Transfer cancelled  </source>
-        <translation type="unfinished"></translation>
+        <translation>Транзакция отменена  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="167"/>
         <source>Error: </source>
-        <translation type="unfinished"></translation>
+        <translation>ОШИБКА: </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="169"/>
         <source>Connecting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Подключение...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="170"/>
         <source>Unable to connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно подключиться</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="171"/>
         <source>Requesting public key...</source>
-        <translation type="unfinished"></translation>
+        <translation>Запрашивается открытый ключ...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="172"/>
         <source>Received public key...</source>
-        <translation type="unfinished"></translation>
+        <translation>Получается публичный ключ...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="173"/>
         <source>Recipient is not accepting transactions sent by IP address</source>
-        <translation type="unfinished"></translation>
+        <translation>Получатель не принимает транзакции, отправленные на IP адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="174"/>
         <source>Transfer was not accepted</source>
-        <translation type="unfinished"></translation>
+        <translation>Передача была отвергнута</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="175"/>
         <source>Invalid response received</source>
-        <translation type="unfinished"></translation>
+        <translation>Получен неверный ответ</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="176"/>
         <source>Creating transaction...</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание транзакции...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="177"/>
         <source>This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds</source>
-        <translation type="unfinished"></translation>
+        <translation>Данная транзакция требует добавления комиссии (по крайней мере в %s) из-за её размера, сложности, или из-за использования недавно полученных монет</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="180"/>
         <source>Transaction creation failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание транзакции провалилось</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="181"/>
         <source>Transaction aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>Транзакция отменена</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="182"/>
         <source>Lost connection, transaction cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Потеряно соединение, транзакция отменена</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="183"/>
         <source>Sending payment...</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправка платежа...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="184"/>
         <source>The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation type="unfinished"></translation>
+        <translation>В транзакции отказано.  Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.  Или в случае кражи (компрометации) Вашего бумажника.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="188"/>
         <source>Waiting for confirmation...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ожидание подтверждения...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="189"/>
         <source>The payment was sent, but the recipient was unable to verify it.
 The transaction is recorded and will credit to the recipient,
 but the comment information will be blank.</source>
-        <translation type="unfinished"></translation>
+        <translation>Платёж был отправлен, но получатель не смог подтвердить его.
+Транзакция записана и будет зачислена получателю,
+но комментарий к платежу будет пустым.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="193"/>
         <source>Payment was sent, but an invalid response was received</source>
-        <translation type="unfinished"></translation>
+        <translation>Платёж был отправлен, но был получен неверный ответ</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="194"/>
         <source>Payment completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Платёж завершён</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="195"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="196"/>
         <source>Address</source>
-        <translation type="unfinished">Адрес</translation>
+        <translation>Адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="197"/>
         <source>Label</source>
-        <translation type="unfinished">Метка</translation>
+        <translation>Метка</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="198"/>
         <source>Bitcoin Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitcoin-адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="199"/>
         <source>This is one of your own addresses for receiving payments and cannot be entered in the address book.  </source>
-        <translation type="unfinished"></translation>
+        <translation>Это один из Ваших личных адресов для получения платежей. Он не может быть добавлен в адресную книгу.  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="202"/>
         <source>Edit Address</source>
-        <translation type="unfinished">Изменить адрес</translation>
+        <translation>Изменить адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="203"/>
         <source>Edit Address Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить метку</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="204"/>
         <source>Add Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="205"/>
         <source>Bitcoin</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="206"/>
         <source>Bitcoin - Generating</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitcoin - Генерация</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="207"/>
         <source>Bitcoin - (not connected)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitcoin - (нет связи)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="208"/>
         <source>&amp;Open Bitcoin</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показать бумажник</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="209"/>
         <source>&amp;Send Bitcoins</source>
-        <translation type="unfinished"></translation>
+        <translation>Отп&amp;равка</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="210"/>
         <source>O&amp;ptions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Оп&amp;ции...</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="211"/>
         <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы&amp;ход</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="212"/>
         <source>Program has crashed and will terminate.  </source>
-        <translation type="unfinished"></translation>
+        <translation>Программа экстренно завершилась и будет уничтожена.  </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="216"/>
         <source>beta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds  </source>
-        <translation type="obsolete">ОШИБКА: Данная транзакция требует добавления комиссии (по крайней мере в %s) из-за её размера, сложности, или из-за использования недавно полученных монет  </translation>
-    </message>
-    <message>
-        <source>Error: Transaction creation failed  </source>
-        <translation type="obsolete">Ошибка: Создание транзакции не удалось  </translation>
+        <translation>бета</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="161"/>
@@ -2154,21 +2155,9 @@ but the comment information will be blank.</source>
         <translation>Отправка...</translation>
     </message>
     <message>
-        <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation type="obsolete">Ошибка: В транзакции отказано.  Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.  Или в случае кражи (компрометации) Вашего бумажника.</translation>
-    </message>
-    <message>
-        <source>Invalid amount</source>
-        <translation type="obsolete">Ошибка в сумме</translation>
-    </message>
-    <message>
         <location filename="../bitcoinstrings.cpp" line="168"/>
         <source>Insufficient funds</source>
         <translation>Недостаточно монет</translation>
-    </message>
-    <message>
-        <source>Invalid bitcoin address</source>
-        <translation type="obsolete">Ошибочный адрес</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="65"/>
@@ -2176,35 +2165,9 @@ but the comment information will be blank.</source>
         <translation>Невозможно забиндить порт %d на данном компьютере.  Возможно, бумажник ужк запущен.</translation>
     </message>
     <message>
-        <source>To use the %s option</source>
-        <translation type="obsolete">Для использования опции %s</translation>
-    </message>
-    <message>
-        <source>Warning: %s, you must set rpcpassword=&lt;password&gt;
-in the configuration file: %s
-If the file does not exist, create it with owner-readable-only file permissions.
-</source>
-        <translation type="obsolete">ВНИМАНИЕ: %s, Вы должны установить параметр rpcpassword=&lt;password&gt;
-в конфигурационном файле: %s
-Если файл не существует — создайте его с правами &quot;только чтение только для хозяина&quot; (r--------).
-</translation>
-    </message>
-    <message>
-        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
-%s
-If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation type="obsolete">Вы должны установить параметр rpcpassword=&lt;password&gt; в конфигурационном файле:
-%s
-Если файл не существует — создайте его с правами &quot;только чтение только для хозяина&quot; (r--------).</translation>
-    </message>
-    <message>
         <location filename="../bitcoinstrings.cpp" line="213"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Bitcoin will not work properly.</source>
         <translation>ВНИМАНИЕ: Проверьте дату и время, установленные на Вашем компьютере. Если Ваши часы идут не правильно Bitcoin может наботать не корректно.</translation>
-    </message>
-    <message>
-        <source>-beta</source>
-        <translation type="obsolete">-бета</translation>
     </message>
 </context>
 </TS>

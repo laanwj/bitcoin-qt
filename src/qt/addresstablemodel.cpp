@@ -157,7 +157,7 @@ bool AddressTableModel::setData(const QModelIndex & index, const QVariant & valu
         switch(index.column())
         {
         case Label:
-            wallet->SetAddressBookName(rec->address.toStdString(), (std::string)value.toString().toLocal8Bit().data());//.toStdString());
+            wallet->SetAddressBookName(rec->address.toStdString(), (std::string)value.toString().toUtf8().data());//.toStdString());
             rec->label = value.toString();
             break;
         case Address:
@@ -175,7 +175,7 @@ bool AddressTableModel::setData(const QModelIndex & index, const QVariant & valu
                     // Remove old entry
                     wallet->DelAddressBookName(rec->address.toStdString());
                     // Add new entry with new address
-                    wallet->SetAddressBookName(value.toString().toStdString(), (std::string)rec->label.toLocal8Bit().data());//.toStdString());
+                    wallet->SetAddressBookName(value.toString().toStdString(), (std::string)rec->label.toUtf8().data());//.toStdString());
                 }
 
                 rec->address = value.toString();
@@ -242,7 +242,7 @@ void AddressTableModel::updateList()
 
 QString AddressTableModel::addRow(const QString &type, const QString &label, const QString &address)
 {
-    std::string strLabel = (std::string)label.toLocal8Bit().data();//.toStdString();
+    std::string strLabel = (std::string)label.toUtf8().data();//.toStdString();
     std::string strAddress = address.toStdString();
 
     editStatus = OK;

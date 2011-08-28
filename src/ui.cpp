@@ -257,7 +257,7 @@ bool GetWalletPassphrase()
         // obtain current wallet encrypt/decrypt key, from passphrase
         // Note that the passphrase is not mlock()d during this entry and could potentially
         // be obtained from disk long after bitcoin has run.
-        strWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the current passphrase to the wallet."),_("Passphrase")).toLocal8Bit().data();
+        strWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the current passphrase to the wallet."),_("Passphrase")).toUtf8().data();
 //.ToStdString();
 
         if (!strWalletPass.size())
@@ -1178,7 +1178,7 @@ void CMainFrame::OnMenuOptionsEncryptWallet(wxCommandEvent& event)
     // obtain current wallet encrypt/decrypt key, from passphrase
     // Note that the passphrase is not mlock()d during this entry and could potentially
     // be obtained from disk long after bitcoin has run.
-    strWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the new passphrase to the wallet.\nPlease use a passphrase of 10 or more random characters, or eight or more words."),_("Passphrase")).toLocal8Bit().data();
+    strWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the new passphrase to the wallet.\nPlease use a passphrase of 10 or more random characters, or eight or more words."),_("Passphrase")).toUtf8().data();
 //.ToStdString();
 
     if (!strWalletPass.size())
@@ -1195,7 +1195,7 @@ void CMainFrame::OnMenuOptionsEncryptWallet(wxCommandEvent& event)
     string strWalletPassTest;
     strWalletPassTest.reserve(100);
     mlock(&strWalletPassTest[0], strWalletPassTest.capacity());
-    strWalletPassTest = (std::string)wxGetPasswordFromUser(_("Please re-enter your new wallet passphrase."),_("Passphrase")).toLocal8Bit().data();
+    strWalletPassTest = (std::string)wxGetPasswordFromUser(_("Please re-enter your new wallet passphrase."),_("Passphrase")).toUtf8().data();
 //.ToStdString();
 
     if (strWalletPassTest != strWalletPass)
@@ -1243,7 +1243,7 @@ void CMainFrame::OnMenuOptionsChangeWalletPassphrase(wxCommandEvent& event)
     // obtain current wallet encrypt/decrypt key, from passphrase
     // Note that the passphrase is not mlock()d during this entry and could potentially
     // be obtained from disk long after bitcoin has run.
-    strOldWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the current passphrase to the wallet."),_("Passphrase")).toLocal8Bit().data();
+    strOldWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the current passphrase to the wallet."),_("Passphrase")).toUtf8().data();
 //.ToStdString();
 
     CRITICAL_BLOCK(pwalletMain->cs_vMasterKey)
@@ -1269,7 +1269,7 @@ void CMainFrame::OnMenuOptionsChangeWalletPassphrase(wxCommandEvent& event)
         // obtain new wallet encrypt/decrypt key, from passphrase
         // Note that the passphrase is not mlock()d during this entry and could potentially
         // be obtained from disk long after bitcoin has run.
-        strNewWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the new passphrase for the wallet."),_("Passphrase")).toLocal8Bit().data();
+        strNewWalletPass = (std::string)wxGetPasswordFromUser(_("Enter the new passphrase for the wallet."),_("Passphrase")).toUtf8().data();
 //.ToStdString();
 
         if (!strNewWalletPass.size())
@@ -1289,7 +1289,7 @@ void CMainFrame::OnMenuOptionsChangeWalletPassphrase(wxCommandEvent& event)
         // obtain new wallet encrypt/decrypt key, from passphrase
         // Note that the passphrase is not mlock()d during this entry and could potentially
         // be obtained from disk long after bitcoin has run.
-        strNewWalletPassTest = (std::string)wxGetPasswordFromUser(_("Re-enter the new passphrase for the wallet."),_("Passphrase")).toLocal8Bit().data();
+        strNewWalletPassTest = (std::string)wxGetPasswordFromUser(_("Re-enter the new passphrase for the wallet."),_("Passphrase")).toUtf8().data();
 //.ToStdString();
 
         if (strNewWalletPassTest != strNewWalletPass)
