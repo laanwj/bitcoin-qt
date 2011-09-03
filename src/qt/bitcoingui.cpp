@@ -291,11 +291,13 @@ void BitcoinGUI::createTrayIcon()
 
 void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
-    if(reason == QSystemTrayIcon::Trigger)
+
+    if(reason == QSystemTrayIcon::DoubleClick)
     {
         // Doubleclick on system tray icon triggers "open bitcoin"
         openBitcoinAction->trigger();
     }
+
 }
 
 void BitcoinGUI::optionsClicked()
