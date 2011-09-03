@@ -20,7 +20,6 @@
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
-#include "notificator.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -52,8 +51,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     walletModel(0),
     encryptWalletAction(0),
     changePassphraseAction(0),
-    trayIcon(0),
-    notificator(0)
+    trayIcon(0)
 {
     resize(850, 550);
     setWindowTitle(tr("Bitcoin Wallet"));
@@ -289,19 +287,15 @@ void BitcoinGUI::createTrayIcon()
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
     trayIcon->show();
-
-    notificator = new Notificator(tr("bitcoin-qt"), trayIcon);
 }
 
 void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
-
-    if(reason == QSystemTrayIcon::DoubleClick)
+    if(reason == QSystemTrayIcon::Trigger)
     {
-        // Doubleclick on system tray icon triggers "open bitcoin"
+        // Click on system tray icon triggers "open bitcoin"
         openBitcoinAction->trigger();
     }
-
 }
 
 void BitcoinGUI::optionsClicked()
@@ -400,7 +394,18 @@ void BitcoinGUI::setNumBlocks(int count)
 void BitcoinGUI::error(const QString &title, const QString &message)
 {
     // Report errors from network/worker thread
-    notificator->notify(Notificator::Critical, title, message);
+    if(trayIcon->supportsMessages())
+    {
+        // Show as "balloon" message if possible
+        trayIcon->showMessage(title, message, QSystemTrayIcon::Critical);
+    }
+    else
+    {
+        // Fall back to old fashioned popup dialog if not
+        QMessageBox::critical(this, title,
+            message,
+            QMessageBox::Ok, QMessageBox::Ok);
+    }
 }
 
 void BitcoinGUI::changeEvent(QEvent *e)
@@ -475,6 +480,8 @@ void BitcoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
 
 void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int end)
 {
+    if(start == end)
+        return;
     TransactionTableModel *ttm = walletModel->getTransactionTableModel();
     qint64 amount = ttm->index(start, TransactionTableModel::Amount, parent)
                     .data(Qt::EditRole).toULongLong();
@@ -488,21 +495,14 @@ void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int 
                         .data().toString();
         QString address = ttm->index(start, TransactionTableModel::ToAddress, parent)
                         .data().toString();
-        QIcon icon = qvariant_cast<QIcon>(ttm->index(start,
-                            TransactionTableModel::ToAddress, parent)
-                        .data(Qt::DecorationRole));
 
-        notificator->notify(Notificator::Information,
-                            (amount)<0 ? tr("Sent transaction") :
-                                         tr("Incoming transaction"),
-                              tr("Date: %1\n"
-                                 "Amount: %2\n"
-                                 "Type: %3\n"
-                                 "Address: %4\n")
-                              .arg(date)
-                              .arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), amount, true))
-                              .arg(type)
-                              .arg(address), icon);
+        trayIcon->showMessage((amount)<0 ? tr("Sent transaction") :
+                                           tr("Incoming transaction"),
+                              tr("Date: ") + date + "\n" +
+                              tr("Amount: ") + BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), amount, true) + "\n" +
+                              tr("Type: ") + type + "\n" +
+                              tr("Address: ") + address + "\n",
+                              QSystemTrayIcon::Information);
     }
 }
 

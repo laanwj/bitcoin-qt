@@ -11,7 +11,6 @@ class TransactionView;
 class OverviewPage;
 class AddressBookPage;
 class SendCoinsDialog;
-class Notificator;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -78,7 +77,6 @@ private:
     QAction *changePassphraseAction;
 
     QSystemTrayIcon *trayIcon;
-    Notificator *notificator;
     TransactionView *transactionView;
 
     QMovie *syncIconMovie;
