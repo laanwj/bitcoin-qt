@@ -104,6 +104,7 @@ private slots:
     void gotoAddressBookPage();
     void gotoReceiveCoinsPage();
     void gotoSendCoinsPage();
+    void showApplication();
 
     // Misc actions
     void optionsClicked();
