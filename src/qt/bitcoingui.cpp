@@ -20,6 +20,7 @@
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
+#include "qtwin.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -429,26 +430,29 @@ void BitcoinGUI::changeEvent(QEvent *e)
         #ifdef Q_OS_WIN
         // Make the background bland when maximized on Windows
         // Otherwise text becomes hard to read
-        QPalette pal = palette();
-        QColor bg = pal.window().color();
-        if(isMaximized())
+        if (QtWin::isCompositionEnabled())
         {
-            setAttribute(Qt::WA_TranslucentBackground, false);
-            setAttribute(Qt::WA_StyledBackground, true);
-            QBrush wb = pal.window();
-            bg = wb.color();
-            bg.setAlpha(255);
-            pal.setColor(QPalette::Window, bg);
-            setPalette(pal);
-        }
-        else
-        {
-            setAttribute(Qt::WA_TranslucentBackground);
-            setAttribute(Qt::WA_StyledBackground, false);
-            bg.setAlpha(0);
-            pal.setColor(QPalette::Window, bg);
-            setPalette(pal);
-            setAttribute(Qt::WA_NoSystemBackground, false);
+            QPalette pal = palette();
+            QColor bg = pal.window().color();
+            if(isMaximized())
+            {
+                setAttribute(Qt::WA_TranslucentBackground, false);
+                setAttribute(Qt::WA_StyledBackground, true);
+                QBrush wb = pal.window();
+                bg = wb.color();
+                bg.setAlpha(255);
+                pal.setColor(QPalette::Window, bg);
+                setPalette(pal);
+            }
+            else
+            {
+                setAttribute(Qt::WA_TranslucentBackground);
+                setAttribute(Qt::WA_StyledBackground, false);
+                bg.setAlpha(0);
+                pal.setColor(QPalette::Window, bg);
+                setPalette(pal);
+                setAttribute(Qt::WA_NoSystemBackground, false);
+            }
         }
         #endif
     }
