@@ -97,6 +97,8 @@ public slots:
     */
     void askFee(qint64 nFeeRequired, bool *payFee);
 
+    void setWindowComposition();
+
 private slots:
     // UI pages
     void gotoOverviewPage();

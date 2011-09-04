@@ -152,18 +152,7 @@ int main(int argc, char *argv[])
 
                 if (QtWin::isCompositionEnabled())
                 {
-#ifdef Q_OS_WIN
-                    // Windows-specific customization
-                    window.setAttribute(Qt::WA_TranslucentBackground);
-                    window.setAttribute(Qt::WA_NoSystemBackground, false);
-                    QPalette pal = window.palette();
-                    QColor bg = pal.window().color();
-                    bg.setAlpha(0);
-                    pal.setColor(QPalette::Window, bg);
-                    window.setPalette(pal);
-                    window.ensurePolished();
-                    window.setAttribute(Qt::WA_StyledBackground, false);
-#endif
+                    window.setWindowComposition();
                     QtWin::extendFrameIntoClientArea(&window);
                     window.setContentsMargins(0, 0, 0, 0);
                 }
