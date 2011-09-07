@@ -20,7 +20,7 @@
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
-#include "notificator.h"
+#include "qtwin.h"
 
 #include <QApplication>
 #include <QMainWindow>
@@ -52,8 +52,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     walletModel(0),
     encryptWalletAction(0),
     changePassphraseAction(0),
-    trayIcon(0),
-    notificator(0)
+    trayIcon(0)
 {
     resize(850, 550);
     setWindowTitle(tr("Bitcoin Wallet"));
@@ -216,7 +215,7 @@ void BitcoinGUI::createActions()
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(optionsAction, SIGNAL(triggered()), this, SLOT(optionsClicked()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
-    connect(openBitcoinAction, SIGNAL(triggered()), this, SLOT(show()));
+    connect(openBitcoinAction, SIGNAL(triggered()), this, SLOT(showNormal()));
     connect(encryptWalletAction, SIGNAL(triggered(bool)), this, SLOT(encryptWallet(bool)));
     connect(changePassphraseAction, SIGNAL(triggered()), this, SLOT(changePassphrase()));
 }
@@ -289,15 +288,13 @@ void BitcoinGUI::createTrayIcon()
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
     trayIcon->show();
-
-    notificator = new Notificator(tr("bitcoin-qt"), trayIcon);
 }
 
 void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
-        // Doubleclick on system tray icon triggers "open bitcoin"
+        // Click on system tray icon triggers "open bitcoin"
         openBitcoinAction->trigger();
     }
 }
@@ -398,7 +395,18 @@ void BitcoinGUI::setNumBlocks(int count)
 void BitcoinGUI::error(const QString &title, const QString &message)
 {
     // Report errors from network/worker thread
-    notificator->notify(Notificator::Critical, title, message);
+    if(trayIcon->supportsMessages())
+    {
+        // Show as "balloon" message if possible
+        trayIcon->showMessage(title, message, QSystemTrayIcon::Critical);
+    }
+    else
+    {
+        // Fall back to old fashioned popup dialog if not
+        QMessageBox::critical(this, title,
+            message,
+            QMessageBox::Ok, QMessageBox::Ok);
+    }
 }
 
 void BitcoinGUI::changeEvent(QEvent *e)
@@ -414,10 +422,12 @@ void BitcoinGUI::changeEvent(QEvent *e)
             }
             else
             {
+                show();
                 e->accept();
             }
         }
     }
+    setWindowComposition();
     QMainWindow::changeEvent(e);
 }
 
@@ -429,6 +439,41 @@ void BitcoinGUI::closeEvent(QCloseEvent *event)
         qApp->quit();
     }
     QMainWindow::closeEvent(event);
+}
+
+void BitcoinGUI::setWindowComposition()
+{
+    #ifdef Q_OS_WIN
+    // Make the background bland when maximized on Windows Vista or 7
+    // Otherwise text becomes hard to read
+    if (QtWin::isCompositionEnabled())
+    {
+        QPalette pal = palette();
+        QColor bg = pal.window().color();
+        if(isMaximized())
+        {
+            setAttribute(Qt::WA_TranslucentBackground, false);
+            setAttribute(Qt::WA_StyledBackground, true);
+            QBrush wb = pal.window();
+            bg = wb.color();
+            bg.setAlpha(255);
+            pal.setColor(QPalette::Window, bg);
+            setPalette(pal);
+
+        }
+        else
+        {
+            setAttribute(Qt::WA_TranslucentBackground);
+            setAttribute(Qt::WA_StyledBackground, false);
+            bg.setAlpha(0);
+            pal.setColor(QPalette::Window, bg);
+            setPalette(pal);
+            setAttribute(Qt::WA_NoSystemBackground, false);
+            ensurePolished();
+            setAttribute(Qt::WA_StyledBackground, false);
+        }
+    }
+    #endif
 }
 
 void BitcoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
@@ -446,6 +491,8 @@ void BitcoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
 
 void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int end)
 {
+    if(start == end)
+        return;
     TransactionTableModel *ttm = walletModel->getTransactionTableModel();
     qint64 amount = ttm->index(start, TransactionTableModel::Amount, parent)
                     .data(Qt::EditRole).toULongLong();
@@ -459,21 +506,14 @@ void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int 
                         .data().toString();
         QString address = ttm->index(start, TransactionTableModel::ToAddress, parent)
                         .data().toString();
-        QIcon icon = qvariant_cast<QIcon>(ttm->index(start,
-                            TransactionTableModel::ToAddress, parent)
-                        .data(Qt::DecorationRole));
 
-        notificator->notify(Notificator::Information,
-                            (amount)<0 ? tr("Sent transaction") :
-                                         tr("Incoming transaction"),
-                              tr("Date: %1\n"
-                                 "Amount: %2\n"
-                                 "Type: %3\n"
-                                 "Address: %4\n")
-                              .arg(date)
-                              .arg(BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), amount, true))
-                              .arg(type)
-                              .arg(address), icon);
+        trayIcon->showMessage((amount)<0 ? tr("Sent transaction") :
+                                           tr("Incoming transaction"),
+                              tr("Date: ") + date + "\n" +
+                              tr("Amount: ") + BitcoinUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), amount, true) + "\n" +
+                              tr("Type: ") + type + "\n" +
+                              tr("Address: ") + address + "\n",
+                              QSystemTrayIcon::Information);
     }
 }
 

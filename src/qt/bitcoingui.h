@@ -11,7 +11,6 @@ class TransactionView;
 class OverviewPage;
 class AddressBookPage;
 class SendCoinsDialog;
-class Notificator;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -78,7 +77,6 @@ private:
     QAction *changePassphraseAction;
 
     QSystemTrayIcon *trayIcon;
-    Notificator *notificator;
     TransactionView *transactionView;
 
     QMovie *syncIconMovie;
@@ -98,6 +96,8 @@ public slots:
        http://bugreports.qt.nokia.com/browse/QTBUG-10440
     */
     void askFee(qint64 nFeeRequired, bool *payFee);
+
+    void setWindowComposition();
 
 private slots:
     // UI pages
