@@ -102,7 +102,7 @@ bool BitcoinAmountField::eventFilter(QObject *object, QEvent *event)
             // Translate a comma into a period
             QKeyEvent periodKeyEvent(event->type(), Qt::Key_Period, keyEvent->modifiers(), ".", keyEvent->isAutoRepeat(), keyEvent->count());
             qApp->sendEvent(object, &periodKeyEvent);
-            return false;
+            return true;
         }
     }
     return QWidget::eventFilter(object, event);
