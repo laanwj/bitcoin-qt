@@ -66,9 +66,7 @@ private:
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
 
-#ifdef Q_WS_MAC
-    QMenuBar *defaultMenuBar;
-#endif
+    QMenuBar *appMenuBar;
     QAction *overviewAction;
     QAction *historyAction;
     QAction *quitAction;
@@ -89,6 +87,8 @@ private:
     QMovie *syncIconMovie;
 
     void createActions();
+    void createMenuBar();
+    void createToolBars();
     QWidget *createTabs();
     void createTrayIcon();
 

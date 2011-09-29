@@ -63,53 +63,24 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setWindowTitle(tr("Bitcoin Wallet"));
 #ifndef Q_WS_MAC
     setWindowIcon(QIcon(":icons/bitcoin"));
+#else
+    setUnifiedTitleAndToolBarOnMac(true);
+    QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
     // Accept D&D of URIs
     setAcceptDrops(true);
 
+    // Create actions for the toolbar, menu bar and tray/dock icon
     createActions();
 
-    QMenuBar *menuBar;
-#ifdef Q_WS_MAC
-    // More native look & feel
-    setUnifiedTitleAndToolBarOnMac(true);
-    QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+    // Create application menu bar
+    createMenuBar();
 
-    // Create a decoupled menu bar on mac which stays even if the window is closed
-    defaultMenuBar = new QMenuBar();
-    menuBar = defaultMenuBar;
-#else
-    menuBar = menuBar();
-#endif
+    // Create the toolbars
+    createToolBars();
 
-    // Menus
-    QMenu *file = menuBar->addMenu(tr("&File"));
-    file->addAction(sendCoinsAction);
-    file->addAction(receiveCoinsAction);
-    file->addSeparator();
-    file->addAction(quitAction);
-    
-    QMenu *settings = menuBar->addMenu(tr("&Settings"));
-    settings->addAction(encryptWalletAction);
-    settings->addAction(changePassphraseAction);
-    settings->addSeparator();
-    settings->addAction(optionsAction);
-
-    QMenu *help = menuBar->addMenu(tr("&Help"));
-    help->addAction(aboutAction);
-    
-    // Toolbars
-    QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
-    toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    toolbar->addAction(overviewAction);
-    toolbar->addAction(sendCoinsAction);
-    toolbar->addAction(receiveCoinsAction);
-    toolbar->addAction(historyAction);
-    toolbar->addAction(addressBookAction);
-
-    QToolBar *toolbar2 = addToolBar(tr("Actions toolbar"));
-    toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    toolbar2->addAction(exportAction);
+    // Create the tray icon (or setup the dock icon)
+    createTrayIcon();
 
     // Create tabs
     overviewPage = new OverviewPage();
@@ -168,8 +139,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
-    createTrayIcon();
-
     syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
@@ -184,7 +153,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 BitcoinGUI::~BitcoinGUI()
 {
 #ifdef Q_WS_MAC
-    delete defaultMenuBar;
+    delete appMenuBar;
 #endif
 }
 
@@ -250,6 +219,48 @@ void BitcoinGUI::createActions()
     connect(changePassphraseAction, SIGNAL(triggered()), this, SLOT(changePassphrase()));
 }
 
+void BitcoinGUI::createMenuBar()
+{
+#ifdef Q_WS_MAC
+    // Create a decoupled menu bar on Mac which stays even if the window is closed
+    appMenuBar = new QMenuBar();
+#else
+    // Get the main window's menu bar on other platforms
+    appMenuBar = menuBar();
+#endif
+
+    // Configure the menus
+    QMenu *file = appMenuBar->addMenu(tr("&File"));
+    file->addAction(sendCoinsAction);
+    file->addAction(receiveCoinsAction);
+    file->addSeparator();
+    file->addAction(quitAction);
+
+    QMenu *settings = appMenuBar->addMenu(tr("&Settings"));
+    settings->addAction(encryptWalletAction);
+    settings->addAction(changePassphraseAction);
+    settings->addSeparator();
+    settings->addAction(optionsAction);
+
+    QMenu *help = appMenuBar->addMenu(tr("&Help"));
+    help->addAction(aboutAction);
+}
+
+void BitcoinGUI::createToolBars()
+{
+    QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
+    toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    toolbar->addAction(overviewAction);
+    toolbar->addAction(sendCoinsAction);
+    toolbar->addAction(receiveCoinsAction);
+    toolbar->addAction(historyAction);
+    toolbar->addAction(addressBookAction);
+
+    QToolBar *toolbar2 = addToolBar(tr("Actions toolbar"));
+    toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    toolbar2->addAction(exportAction);
+}
+
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
@@ -305,14 +316,10 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
 
 void BitcoinGUI::createTrayIcon()
 {
-    trayIcon = new QSystemTrayIcon(this);
+    QMenu *trayIconMenu;
 #ifndef Q_WS_MAC
-    QMenu *trayIconMenu = new QMenu(this);
-    trayIconMenu->addAction(openBitcoinAction);
-    trayIconMenu->addAction(optionsAction);
-    trayIconMenu->addSeparator();
-    trayIconMenu->addAction(quitAction);
-
+    trayIcon = new QSystemTrayIcon(this);
+    trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->setToolTip("Bitcoin client");
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
@@ -320,15 +327,22 @@ void BitcoinGUI::createTrayIcon()
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
     trayIcon->show();
 #else
-    // Note: On Mac, the tray icon is only used for notifications.
-    //       Instead, the dock icon is used here to provide the desired functionality.
+    // Note: On Mac, the dock icon is used to provide the tray's functionality.
     MacDockIconHandler *dockIconHandler = MacDockIconHandler::instance();
     connect(dockIconHandler, SIGNAL(dockIconClicked()), openBitcoinAction, SLOT(trigger()));
-    QMenu *dockIconMenu = dockIconHandler->dockMenu();
-    dockIconMenu->addAction(receiveCoinsAction);
-    dockIconMenu->addAction(sendCoinsAction);
-    dockIconMenu->addSeparator();
-    dockIconMenu->addAction(optionsAction);
+    trayIconMenu = dockIconHandler->dockMenu();
+#endif
+
+    // Configuration of the tray icon (or dock icon) icon menu
+    trayIconMenu->addAction(openBitcoinAction);
+    trayIconMenu->addSeparator();
+    trayIconMenu->addAction(receiveCoinsAction);
+    trayIconMenu->addAction(sendCoinsAction);
+    trayIconMenu->addSeparator();
+    trayIconMenu->addAction(optionsAction);
+#ifndef Q_WS_MAC // This is built-in on Mac
+    trayIconMenu->addSeparator();
+    trayIconMenu->addAction(quitAction);
 #endif
 
     notificator = new Notificator(tr("bitcoin-qt"), trayIcon);
@@ -358,7 +372,6 @@ void BitcoinGUI::aboutClicked()
     AboutDialog dlg;
     dlg.setModel(clientModel);
     dlg.exec();
-    notificator->notify(Notificator::Information, "Demo", "Demo1");
 }
 
 void BitcoinGUI::setNumConnections(int count)
@@ -530,6 +543,7 @@ void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int 
 
 void BitcoinGUI::gotoOverviewPage()
 {
+    show();
     overviewAction->setChecked(true);
     centralWidget->setCurrentWidget(overviewPage);
 
@@ -539,6 +553,7 @@ void BitcoinGUI::gotoOverviewPage()
 
 void BitcoinGUI::gotoHistoryPage()
 {
+    show();
     historyAction->setChecked(true);
     centralWidget->setCurrentWidget(transactionsPage);
 
@@ -549,6 +564,7 @@ void BitcoinGUI::gotoHistoryPage()
 
 void BitcoinGUI::gotoAddressBookPage()
 {
+    show();
     addressBookAction->setChecked(true);
     centralWidget->setCurrentWidget(addressBookPage);
 
@@ -559,10 +575,7 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
-#ifdef Q_WS_MAC
-    // On Mac this can be called while the window is hidden, so make sure it is shown
     show();
-#endif
     receiveCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(receiveCoinsPage);
 
@@ -573,10 +586,7 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
-#ifdef Q_WS_MAC
-    // On Mac this can be called while the window is hidden, so make sure it is shown
     show();
-#endif
     sendCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(sendCoinsPage);
 
