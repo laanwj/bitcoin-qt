@@ -22,6 +22,10 @@
 #include "askpassphrasedialog.h"
 #include "notificator.h"
 
+#ifdef Q_WS_MAC
+#include "macdockiconhandler.h"
+#endif
+
 #include <QApplication>
 #include <QMainWindow>
 #include <QMenuBar>
@@ -57,26 +61,41 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 {
     resize(850, 550);
     setWindowTitle(tr("Bitcoin Wallet"));
+#ifndef Q_WS_MAC
     setWindowIcon(QIcon(":icons/bitcoin"));
+#endif
     // Accept D&D of URIs
     setAcceptDrops(true);
 
     createActions();
 
+    QMenuBar *menuBar;
+#ifdef Q_WS_MAC
+    // More native look & feel
+    setUnifiedTitleAndToolBarOnMac(true);
+    QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+
+    // Create a decoupled menu bar on mac which stays even if the window is closed
+    defaultMenuBar = new QMenuBar();
+    menuBar = defaultMenuBar;
+#else
+    menuBar = menuBar();
+#endif
+
     // Menus
-    QMenu *file = menuBar()->addMenu(tr("&File"));
+    QMenu *file = menuBar->addMenu(tr("&File"));
     file->addAction(sendCoinsAction);
     file->addAction(receiveCoinsAction);
     file->addSeparator();
     file->addAction(quitAction);
     
-    QMenu *settings = menuBar()->addMenu(tr("&Settings"));
+    QMenu *settings = menuBar->addMenu(tr("&Settings"));
     settings->addAction(encryptWalletAction);
     settings->addAction(changePassphraseAction);
     settings->addSeparator();
     settings->addAction(optionsAction);
 
-    QMenu *help = menuBar()->addMenu(tr("&Help"));
+    QMenu *help = menuBar->addMenu(tr("&Help"));
     help->addAction(aboutAction);
     
     // Toolbars
@@ -162,6 +181,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     gotoOverviewPage();
 }
 
+BitcoinGUI::~BitcoinGUI()
+{
+#ifdef Q_WS_MAC
+    delete defaultMenuBar;
+#endif
+}
+
 void BitcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
@@ -199,10 +225,13 @@ void BitcoinGUI::createActions()
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("&Exit"), this);
     quitAction->setToolTip(tr("Quit application"));
-    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About"), this);
+    quitAction->setMenuRole(QAction::QuitRole);
+    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About %1").arg(qApp->applicationName()), this);
     aboutAction->setToolTip(tr("Show information about Bitcoin"));
+    aboutAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
     optionsAction->setToolTip(tr("Modify configuration options for bitcoin"));
+    optionsAction->setMenuRole(QAction::PreferencesRole);
     openBitcoinAction = new QAction(QIcon(":/icons/bitcoin"), tr("Open &Bitcoin"), this);
     openBitcoinAction->setToolTip(tr("Show the Bitcoin window"));
     exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
@@ -276,23 +305,36 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
 
 void BitcoinGUI::createTrayIcon()
 {
+    trayIcon = new QSystemTrayIcon(this);
+#ifndef Q_WS_MAC
     QMenu *trayIconMenu = new QMenu(this);
     trayIconMenu->addAction(openBitcoinAction);
     trayIconMenu->addAction(optionsAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 
-    trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->setToolTip("Bitcoin client");
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
     trayIcon->show();
+#else
+    // Note: On Mac, the tray icon is only used for notifications.
+    //       Instead, the dock icon is used here to provide the desired functionality.
+    MacDockIconHandler *dockIconHandler = MacDockIconHandler::instance();
+    connect(dockIconHandler, SIGNAL(dockIconClicked()), openBitcoinAction, SLOT(trigger()));
+    QMenu *dockIconMenu = dockIconHandler->dockMenu();
+    dockIconMenu->addAction(receiveCoinsAction);
+    dockIconMenu->addAction(sendCoinsAction);
+    dockIconMenu->addSeparator();
+    dockIconMenu->addAction(optionsAction);
+#endif
 
     notificator = new Notificator(tr("bitcoin-qt"), trayIcon);
 }
 
+#ifndef Q_WS_MAC
 void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
@@ -302,6 +344,7 @@ void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 
 }
+#endif
 
 void BitcoinGUI::optionsClicked()
 {
@@ -315,6 +358,7 @@ void BitcoinGUI::aboutClicked()
     AboutDialog dlg;
     dlg.setModel(clientModel);
     dlg.exec();
+    notificator->notify(Notificator::Information, "Demo", "Demo1");
 }
 
 void BitcoinGUI::setNumConnections(int count)
@@ -405,9 +449,10 @@ void BitcoinGUI::error(const QString &title, const QString &message)
 
 void BitcoinGUI::changeEvent(QEvent *e)
 {
+#ifndef Q_WS_MAC // Ignored on Mac
     if (e->type() == QEvent::WindowStateChange)
     {
-        if(clientModel->getOptionsModel()->getMinimizeToTray())
+        if (clientModel->getOptionsModel()->getMinimizeToTray())
         {
             if (isMinimized())
             {
@@ -421,16 +466,19 @@ void BitcoinGUI::changeEvent(QEvent *e)
             }
         }
     }
+#endif
     QMainWindow::changeEvent(e);
 }
 
 void BitcoinGUI::closeEvent(QCloseEvent *event)
 {
+#ifndef Q_WS_MAC // Ignored on Mac
     if(!clientModel->getOptionsModel()->getMinimizeToTray() &&
        !clientModel->getOptionsModel()->getMinimizeOnClose())
     {
         qApp->quit();
     }
+#endif
     QMainWindow::closeEvent(event);
 }
 
@@ -511,6 +559,10 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
+#ifdef Q_WS_MAC
+    // On Mac this can be called while the window is hidden, so make sure it is shown
+    show();
+#endif
     receiveCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(receiveCoinsPage);
 
@@ -521,6 +573,10 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
+#ifdef Q_WS_MAC
+    // On Mac this can be called while the window is hidden, so make sure it is shown
+    show();
+#endif
     sendCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(sendCoinsPage);
 

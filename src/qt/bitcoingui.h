@@ -29,6 +29,8 @@ class BitcoinGUI : public QMainWindow
     Q_OBJECT
 public:
     explicit BitcoinGUI(QWidget *parent = 0);
+    ~BitcoinGUI();
+
     void setClientModel(ClientModel *clientModel);
     void setWalletModel(WalletModel *walletModel);
     
@@ -64,6 +66,9 @@ private:
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
 
+#ifdef Q_WS_MAC
+    QMenuBar *defaultMenuBar;
+#endif
     QAction *overviewAction;
     QAction *historyAction;
     QAction *quitAction;
@@ -110,7 +115,9 @@ private slots:
     // Misc actions
     void optionsClicked();
     void aboutClicked();
+#ifndef Q_WS_MAC
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
+#endif
     void incomingTransaction(const QModelIndex & parent, int start, int end);
     void encryptWallet(bool status);
     void changePassphrase();
