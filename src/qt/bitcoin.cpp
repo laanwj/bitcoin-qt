@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
     // Load language file for system locale
     QString locale = QLocale::system().name();
     QTranslator qtTranslator;
-    qtTranslator.load(QLibraryInfo::location(QLibraryInfo::TranslationsPath) + "/" + locale);
+    qtTranslator.load(QLibraryInfo::location(QLibraryInfo::TranslationsPath) + "/qt_" + locale);
     if (!qtTranslator.isEmpty())
         app.installTranslator(&qtTranslator);
     QTranslator translator;
