@@ -227,6 +227,9 @@ windows:LIBS += -lws2_32 -lgdi32
 windows:DEFINES += __WXMSW__
 windows:RC_FILE = src/qt/res/bitcoin-qt.rc
 
+macx:HEADERS += src/qt/macdockiconhandler.h
+macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
+macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += __WXMAC_OSX__ MSG_NOSIGNAL=0 BOOST_FILESYSTEM_VERSION=3
 macx:ICON = src/qt/res/icons/bitcoin.icns
 macx:TARGET = "Bitcoin Qt"
