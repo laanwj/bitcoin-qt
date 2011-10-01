@@ -269,7 +269,11 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
     {
         QString title_testnet = windowTitle() + QString(" ") + tr("[testnet]");
         setWindowTitle(title_testnet);
+#ifndef Q_WS_MAC
         setWindowIcon(QIcon(":icons/bitcoin_testnet"));
+#else
+        MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitcoin_testnet"));
+#endif
         if(trayIcon)
         {
             trayIcon->setToolTip(title_testnet);

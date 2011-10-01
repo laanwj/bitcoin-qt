@@ -249,8 +249,10 @@ void Notificator::notifyGrowl(Class cls, const QString &title, const QString &te
         }
         notificationIconPixmap = QApplication::style()->standardPixmap(sicon);
     }
-    else
-        notificationIconPixmap = icon.pixmap(48, 48);
+    else {
+        QSize size = icon.actualSize(QSize(48, 48));
+        notificationIconPixmap = icon.pixmap(size);
+    }
 
     QString notificationIcon;
     QTemporaryFile notificationIconFile;

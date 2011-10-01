@@ -4,6 +4,7 @@
 #include <QtCore/QObject>
 
 class QMenu;
+class QIcon;
 class QWidget;
 class objc_object;
 
@@ -14,6 +15,7 @@ public:
     ~MacDockIconHandler();
 
     QMenu *dockMenu();
+    void setIcon(const QIcon &icon);
 
     static MacDockIconHandler *instance();
 
