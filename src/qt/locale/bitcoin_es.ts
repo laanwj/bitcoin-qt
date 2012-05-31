@@ -38,7 +38,7 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     <message>
         <location filename="../forms/addressbookpage.ui" line="14"/>
         <source>Address Book</source>
-        <translation>Guia de direcciones</translation>
+        <translation>Guía de direcciones</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="20"/>
@@ -83,7 +83,7 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     <message>
         <location filename="../addressbookpage.cpp" line="204"/>
         <source>Export Address Book Data</source>
-        <translation>Exporta datos de la Guia de direcciones</translation>
+        <translation>Exporta datos de la Guía de direcciones</translation>
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="206"/>
@@ -291,7 +291,7 @@ Are you sure you wish to encrypt your wallet?</source>
     <message>
         <location filename="../bitcoingui.cpp" line="176"/>
         <source>&amp;Address Book</source>
-        <translation>&amp;Guia de direcciónes</translation>
+        <translation>&amp;Guía de direcciones</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="177"/>
@@ -548,7 +548,7 @@ Dirección: %4</translation>
     <message>
         <location filename="../forms/editaddressdialog.ui" line="35"/>
         <source>The label associated with this address book entry</source>
-        <translation>La etiqueta asociada con esta entrada de la guia</translation>
+        <translation>La etiqueta asociada con esta entrada de la guía</translation>
     </message>
     <message>
         <location filename="../forms/editaddressdialog.ui" line="42"/>
@@ -558,7 +558,7 @@ Dirección: %4</translation>
     <message>
         <location filename="../forms/editaddressdialog.ui" line="52"/>
         <source>The address associated with this address book entry. This can only be modified for sending addresses.</source>
-        <translation>La dirección asociada con esta entrada en la guia. Solo puede ser modificada para direcciónes de envío.</translation>
+        <translation>La dirección asociada con esta entrada en la guía. Solo puede ser modificada para direcciónes de envío.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="20"/>
@@ -583,7 +583,7 @@ Dirección: %4</translation>
     <message>
         <location filename="../editaddressdialog.cpp" line="87"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>La dirección introducia &quot;%1&quot; ya esta guardada en la guia.</translation>
+        <translation>La dirección introducia &quot;%1&quot; ya esta guardada en la guía.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="92"/>
@@ -904,7 +904,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../forms/sendcoinsentry.ui" line="66"/>
         <location filename="../sendcoinsentry.cpp" line="26"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Introduce una etiqueta a esta dirección para añadirla a tu guia</translation>
+        <translation>Introduce una etiqueta a esta dirección para añadirla a tu guía</translation>
     </message>
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="75"/>
@@ -919,7 +919,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="103"/>
         <source>Choose adress from address book</source>
-        <translation>Elije dirección de la  guia</translation>
+        <translation>Elije dirección de la  guía</translation>
     </message>
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="113"/>

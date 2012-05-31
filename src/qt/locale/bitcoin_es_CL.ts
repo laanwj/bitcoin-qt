@@ -38,7 +38,7 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     <message>
         <location filename="../forms/addressbookpage.ui" line="14"/>
         <source>Address Book</source>
-        <translation>Guia de direcciones</translation>
+        <translation>Guía de direcciones</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="20"/>
@@ -83,7 +83,7 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     <message>
         <location filename="../addressbookpage.cpp" line="204"/>
         <source>Export Address Book Data</source>
-        <translation>Exporta datos de la guia de direcciones</translation>
+        <translation>Exporta datos de la guía de direcciones</translation>
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="206"/>
@@ -291,7 +291,7 @@ Are you sure you wish to encrypt your wallet?</source>
     <message>
         <location filename="../bitcoingui.cpp" line="176"/>
         <source>&amp;Address Book</source>
-        <translation>&amp;Guia de direcciónes</translation>
+        <translation>&amp;Guía de direcciones</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="177"/>
@@ -904,7 +904,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../forms/sendcoinsentry.ui" line="66"/>
         <location filename="../sendcoinsentry.cpp" line="26"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Introduce una etiqueta a esta dirección para añadirla a tu guia</translation>
+        <translation>Introduce una etiqueta a esta dirección para añadirla a tu guía</translation>
     </message>
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="75"/>
@@ -919,7 +919,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="103"/>
         <source>Choose adress from address book</source>
-        <translation>Elije dirección de la  guia</translation>
+        <translation>Elije dirección de la  guía</translation>
     </message>
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="113"/>
