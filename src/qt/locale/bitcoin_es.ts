@@ -919,7 +919,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="103"/>
         <source>Choose adress from address book</source>
-        <translation>Elije dirección de la  guía</translation>
+        <translation>Elige dirección de la  guía</translation>
     </message>
     <message>
         <location filename="../forms/sendcoinsentry.ui" line="113"/>
